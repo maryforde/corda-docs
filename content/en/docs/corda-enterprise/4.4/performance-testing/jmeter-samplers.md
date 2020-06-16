@@ -84,7 +84,7 @@ In addition to the parameters required for the `CashIssueSampler`, this sampler 
 * `anonymousIdentities`: Switches the creation of anonymised per-transactions keys on and off.
 
 ## `CashPaySampler`
-The classname of this sampler client is `com.r3.corda.jmeter.CashPaySampler`. The `CashPaySampler` sampler client issues cash once per run in its `setupTest` method, and then generates a transaction to pay 1 dollar “numberOfStatesPerTx” times to a specified party per sample, thus invoking the notary and the payee via P2P. This allows us to test performance with different numbers of states per transaction, and to eliminate issuance from each sample (unlike `CashIssueAndPaySampler`).
+The classname of this sampler client is `com.r3.corda.jmeter.CashPaySampler`. The `CashPaySampler` client issues cash once per run in its `setupTest` method, and then generates a transaction to pay 1 dollar `numberOfStatesPerTx` times to a specified party per sample, thus invoking the notary and the payee via P2P. This allows us to test performance with different numbers of states per transaction, and to eliminate issuance from each sample (unlike `CashIssueAndPaySampler`).
 
 ![cash pay sampler](../resources/cash-pay-sampler.png "cash pay sampler")
 
