@@ -77,7 +77,7 @@ See the [platform support matrix](platform-support-matrix.md) documentation sect
 
 Corda Enterprise 4.5 introduces a new suite of utility CorDapps that can help you safely, and privately reconcile and recover ledger data lost in a disaster scenario.
 
-The 'LedgerSync` CorDapp can be used to routinely check the ledger for data inconsistencies between nodes, without compromising security. In the rare event that an inconsistency is discovered, the CorDapp `LedgerRecover` can be deployed in either Automatic recovery or Manual recovery mode (for more serious data loss) to securely recover the missing data from nodes across the network.
+The `LedgerSync` CorDapp can be used to routinely check the ledger for data inconsistencies between nodes, without compromising security. In the rare event that an inconsistency is discovered, the CorDapp `LedgerRecover` can be deployed in either Automatic recovery or Manual recovery mode (for more serious data loss) to securely recover the missing data from nodes across the network.
 
 See the [Collaborative Recovery](node/collaborative-recovery/introduction-cr.md) documentation section for more information.
 
@@ -97,9 +97,6 @@ The CorDapp is designed to diagnose ledger inconsistencies caused by either of t
 `LedgerSync` is designed to be compliant with the Corda privacy model. It does not share any transaction information with network peers that shouldn’t already have access to it.
 
 See the `LedgerSync` [documentation section](node/collaborative-recovery/ledger-sync.md) for more information.
-
-
-
 
 ### HA Notary readback queue
 
@@ -148,12 +145,14 @@ The following libraries have been updated:
 * `netty` updated to [4.1.46.Final](https://github.com/netty/netty/releases/tag/netty-4.1.46.Final)
 * `tcnative` updated to [2.0.29.Final](https://github.com/netty/netty-tcnative/releases/tag/netty-tcnative-parent-2.0.29.Final)
 
-### Tokens SDK documentation and training
+### Improved Tokens SDK along with new documentation and training
 
-The Tokens SDK documentation has been relocated to the main Corda and Corda Enterprise documentation site, along with a comprehensive training module for developers in the Corda training site.
+The Tokens SDK has been extended to provide a consistent API for use in both Java and Kotlin.
 
-[Read the documentation](cordapps/token-sdk-introduction.md).
-[Explore the training module](https://training.corda.net/libraries/tokens-sdk/)
+The documentation has been relocated to the main Corda and Corda Enterprise documentation site, and a comprehensive training module for developers added to the Corda training site.
+[Read the documentation](token-sdk-introduction.md).
+[Explore the training module](https://training.corda.net/libraries/tokens-sdk/).
+
 ### Other improvements
 
 * All database columns containing datestamps have been standardised to use UTC (the time zone used was previously inconsistent).

@@ -2,31 +2,35 @@
 date: '2020-06-12T12:00:00Z'
 menu:
   corda-enterprise-4-5:
-    identifier: one-click-developer-test-environment
-    name: "One-click developer test environment"
+    identifier: one-click-corda-deployment
+    name: "One-click Corda deployment"
     parent: corda-enterprise-4-5-corda-nodes
 tags:
 - env
 - dev
 
-title: One-click developer test environment
+title: One-click Corda deployment
 weight: 65
 ---
 
 
-# One-click developer test environment
+# One-click Corda deployment
 
-This document describes how a CorDapp developer can test their CorDapp in an Azure environment. It uses three Azure deployment templates.
+This document describes how Corda nodes and networks can be deployed in one click in an Azure environment.
 
-* **CENM Deployment**: CENM is deployed onto a newly-created Kubernetes cluster.
-* **Nodes Onto An Existing Network**: Deploy Nodes onto an newly-created Kubernetes cluster that connects to an externally running network.
-* **Corda One Click**: CEMN is deployed onto a newly-created Kubernetes cluster and then nodes running a custom CorDapp are deployed.
+There are three options that can be found on the Azure Marketplace:
 
-The templates can be found on the Azure Marketplace or downloaded from the [`corda-cloud-deployer` repo](https://github.com/corda/corda-cloud-deployer/) on GitHub.
+* **CENM Deployment**: A CENM instance is deployed onto a newly-created Azure Kubernetes Service cluster.
+* **Nodes Onto An Existing Network**: Corda Enterprise Nodes are deployed onto a newly-created Azure Kubernetes Service cluster that connects to an existing Corda network.
+* **Corda One Click**: A CEMN instance is deployed onto a newly-created Azure Kubernetes Service cluster and then nodes running a custom CorDapp are deployed.
+
+{{< note >}}The nodes deployed using these templates are not production-ready. In particular, they use H2 as their database, which is not a supported configuration, as per the [Platform Support Matrix](../../platform-support-matrix.md#node-databases). In addition, they are not configured to use hardware security modules or Corda Enterprise Firewall instances, and are not deployed in high-availability mode. {{< /note >}}
+
+{{< note >}}Corda Enterprise may be used for evaluation purposes for 90 days pursuant to the [Software Evaluation License Agreement](https://www.r3.com/corda-enterprise-evaluation-license). Any use beyond this (for example in production deployments) requires a commercial licence. Please contact <sales@r3.com> for more information. {{< /note >}}
 
 ## Prerequisites
 
-To delpoy the one-click developer test environment on Azure, you need the following.
+To deploy the node and its CorDapps on Azure, you need the following.
 
 1. An Azure account
 2. A Resource Group
@@ -60,7 +64,7 @@ To delpoy the one-click developer test environment on Azure, you need the follow
 
 2. Run the command `gradlew buildDockerFile` and the plugin will build your image locally for you.
 
-3. Upload the Docker image to your private repo on Azure. The repo should be in the same resource group that wull be used for deployment.
+3. Upload the Docker image to your private repo on Azure. The repo should be in the same resource group that will be used for deployment.
 
    ```bash
    docker push <azure registry>/<image name>:<version>
@@ -139,7 +143,7 @@ To deploy a Corda Node into an existing CENM network, you will need a copy of th
 
 1. Click **Purchase** and wait while the cluster and containers deploy. This can take around 20 minutes.
 
-1. Return to the resource group. The resouce group should now contain a cluster (Kubernetes service) with the cluster name you set and a delpoyment (container instances) with the deployment name you set.
+1. Return to the resource group. The resouce group should now contain a cluster (Kubernetes service) with the cluster name you set and a deployment (container instances) with the deployment name you set.
 
 1. Click the the container group with the name deployment name.
 
@@ -148,6 +152,8 @@ To deploy a Corda Node into an existing CENM network, you will need a copy of th
 1. Here you should see two containers, `cenm-deployer` and `node-deployer`
 
 `node-deployer` will wait for `cenm-deployer` to complete its deployment before deploying the Corda Nodes.
+
+## Interacting with the deployed nodes
 
 Once `node-deployer` has completed, it will display the RPC address and port and the command to connect to it over SSH.
 

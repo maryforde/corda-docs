@@ -96,12 +96,13 @@ The deployment steps are given below:
 
 - Install [helm](https://helm.sh/docs/intro/install/)
 
-    Ensure that the value in the `version` field for `helm version` is equal to or greater than 3.1.1,
+    Ensure that the value in the `version` field for `helm version` is equal to or greater than 3.2,
     as shown in the example below:
 
     ```bash
-    version.BuildInfo{Version:"v3.1.2", GitCommit:"afe70585407b420d0097d07b21c47dc511525ac8", GitTreeState:"clean", GoVersion:"go1.13.8"}
+    version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb4fe05d143688", GitTreeState:"clean", GoVersion:"go1.13.12"}
     ```
+
 - Install [Docker](https://www.docker.com/get-started). Docker is required to run the CENM CLI tool.
 
 - Download the Docker image with CENM [Command-Line Interface (CLI) tool](cenm-cli-tool.md) so you can manage CENM services:
@@ -149,6 +150,7 @@ For instructions on how to do that, refer to the "CENM configuration for externa
 and an explanation of CENM database configuration options.
 
 #### 6. Bootstrap CENM
+
 **Option 1.** Bootstrap by allocating new external IP addresses
 
 To bootstrap your network, run the `bootstrap.cenm` script from the `/k8s/helm` directory.
@@ -279,13 +281,13 @@ kubectl get svc idman-ip notary-ip
 Run the command below to obtain the pod name for the Signing Service:
 
 ```bash
-kubectl get pods -o wide`
+kubectl get pods -o wide
 ```
 
 You will find the truststore password in the `signer/files/pki.conf`, where the default value used in this Helm chart is `trust-store-password`.
 
 {{< note >}} For more details about joining a CENM network, see:
-[Joining an existing compatibility zone](../../corda-os/4.5/joining-a-compatibility-zone.html).
+[Joining an existing compatibility zone](../../corda-os/4.5/joining-a-compatibility-zone.md).
 {{< /note >}}
 
 ### Display logs
