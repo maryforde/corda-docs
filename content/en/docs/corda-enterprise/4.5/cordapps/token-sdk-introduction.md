@@ -13,7 +13,7 @@ title: Tokens SDK
 weight: 15
 ---
 
-# The Tokens SDK
+# Tokens SDK
 
 The Tokens SDK provides you with the fastest and easiest way to create tokens that represent any kind of asset on your network. This asset can be anything you want it to be - conceptual, physical, valuable or not. You can create a token to represent something outside of the network, or something that only exists on the ledger - like a Corda-native digital currency.
 
